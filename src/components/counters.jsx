@@ -5,11 +5,7 @@ class Counters extends Component {
   constructor() {
     super();
     this.state = {
-      counters: [
-        { id: 1, value: 0 },
-        { id: 2, value: 0 },
-        { id: 3, value: 0 },
-      ],
+      counters: [],
     };
   }
 
@@ -64,6 +60,14 @@ class Counters extends Component {
     });
   };
 
+  handleNew = () => {
+    let counters = [...this.state.counters];
+    counters.push({ id: counters.length + 1, value: 0 });
+    this.setState({
+      counters,
+    });
+  };
+
   render = () => {
     const { counters } = this.state;
     return (
@@ -83,6 +87,9 @@ class Counters extends Component {
         </button>
         <button type="button" onClick={this.handleDeleteAll}>
           Delete All
+        </button>
+        <button type="button" onClick={this.handleNew}>
+          New
         </button>
       </main>
     );
