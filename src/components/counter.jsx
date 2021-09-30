@@ -10,16 +10,18 @@ class Counter extends Component {
   };
 
   render() {
-    const { data, onIncrement, onDecrement } = this.props;
+    const { data, onIncrement, onDecrement, onSpecificReset } = this.props;
     return (
       <div>
-        <span className={this.counterClassName()}>{data.value}</span>
-        {/* <span>{data.id}</span> */}
-        <button type="button" onClick={() => onIncrement(data)}>
-          Increment
-        </button>
         <button type="button" onClick={() => onDecrement(data)}>
-          Decrement
+          -
+        </button>
+        <span className={this.counterClassName()}>{data.value}</span>
+        <button type="button" onClick={() => onIncrement(data)}>
+          +
+        </button>
+        <button type="button" onClick={() => onSpecificReset(data)}>
+          Reset
         </button>
       </div>
     );

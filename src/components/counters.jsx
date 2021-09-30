@@ -6,10 +6,9 @@ class Counters extends Component {
     super();
     this.state = {
       counters: [
-        { id: 1, value: 4 },
-        { id: 2, value: 1 },
+        { id: 1, value: 0 },
+        { id: 2, value: 0 },
         { id: 3, value: 0 },
-        { id: 4, value: 12 },
       ],
     };
   }
@@ -32,6 +31,15 @@ class Counters extends Component {
     });
   };
 
+  handleSpecificReset = (counter) => {
+    const counters = [...this.state.counters];
+    const index = counters.indexOf(counter);
+    counter.value = 0;
+    this.setState({
+      counters,
+    });
+  };
+
   handleReset = () => {
     const counters = [...this.state.counters];
     counters.map((counter) => (counter.value = 0));
@@ -40,7 +48,7 @@ class Counters extends Component {
     });
   };
 
-  render() {
+  render = () => {
     const { counters } = this.state;
     return (
       <main className="container">
@@ -50,14 +58,15 @@ class Counters extends Component {
             data={data}
             onIncrement={this.handleIncrement}
             onDecrement={this.handleDecrement}
+            onSpecificReset={this.handleSpecificReset}
           />
         ))}
         <button type="button" onClick={this.handleReset}>
-          Reset
+          Reset All
         </button>
       </main>
     );
-  }
+  };
 }
 
 export default Counters;
