@@ -40,9 +40,25 @@ class Counters extends Component {
     });
   };
 
-  handleReset = () => {
+  handleResetAll = () => {
     const counters = [...this.state.counters];
     counters.map((counter) => (counter.value = 0));
+    this.setState({
+      counters,
+    });
+  };
+
+  handleDeleteAll = () => {
+    let counters = [...this.state.counters];
+    counters = [];
+    this.setState({
+      counters,
+    });
+  };
+
+  handleSpecificDelete = (other) => {
+    let counters = [...this.state.counters];
+    counters = counters.filter((counter) => counter.id !== other.id);
     this.setState({
       counters,
     });
@@ -59,10 +75,14 @@ class Counters extends Component {
             onIncrement={this.handleIncrement}
             onDecrement={this.handleDecrement}
             onSpecificReset={this.handleSpecificReset}
+            onSpecificDelete={this.handleSpecificDelete}
           />
         ))}
-        <button type="button" onClick={this.handleReset}>
+        <button type="button" onClick={this.handleResetAll}>
           Reset All
+        </button>
+        <button type="button" onClick={this.handleDeleteAll}>
+          Delete All
         </button>
       </main>
     );

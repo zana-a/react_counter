@@ -10,7 +10,14 @@ class Counter extends Component {
   };
 
   render() {
-    const { data, onIncrement, onDecrement, onSpecificReset } = this.props;
+    const {
+      data,
+      onIncrement,
+      onDecrement,
+      onSpecificReset,
+      onSpecificDelete,
+    } = this.props;
+
     return (
       <div>
         <button type="button" onClick={() => onDecrement(data)}>
@@ -22,6 +29,9 @@ class Counter extends Component {
         </button>
         <button type="button" onClick={() => onSpecificReset(data)}>
           Reset
+        </button>
+        <button type="button" onClick={() => onSpecificDelete(data)}>
+          Delete
         </button>
       </div>
     );
