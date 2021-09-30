@@ -1,29 +1,8 @@
 import React, { Component } from "react";
 
 class Counter extends Component {
-  constructor() {
-    super();
-    this.state = {
-      value: 0,
-    };
-  }
-
-  handleIncrement = () => {
-    const { value } = this.state;
-    this.setState({
-      value: value + 1,
-    });
-  };
-
-  handleDecrement = () => {
-    const { value } = this.state;
-    this.setState({
-      value: value === 0 ? 0 : value - 1,
-    });
-  };
-
   counterClassName = () => {
-    const { value } = this.state;
+    const { value } = this.props.data;
     let className = "badge badge-";
     if (value === 0) className += "red";
     else className += "blue";
@@ -31,15 +10,15 @@ class Counter extends Component {
   };
 
   render() {
-    const { value } = this.state;
-
+    const { data, handleIncrement, handleDecrement } = this.props;
     return (
       <main className="container">
-        <span className={this.counterClassName()}>{value}</span>
-        <button type="button" onClick={this.handleIncrement}>
+        <span className={this.counterClassName()}>{data.value}</span>
+        {/* <span>{data.id}</span> */}
+        <button type="button" onClick={() => handleIncrement(data)}>
           Increment
         </button>
-        <button type="button" onClick={this.handleDecrement}>
+        <button type="button" onClick={() => handleDecrement(data)}>
           Decrement
         </button>
       </main>

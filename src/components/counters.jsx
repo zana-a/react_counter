@@ -9,22 +9,26 @@ class Counters extends Component {
         { id: 1, value: 4 },
         { id: 2, value: 1 },
         { id: 3, value: 0 },
-        { id: 4, value: 73 },
+        { id: 4, value: 12 },
       ],
     };
   }
 
-  handleIncrement = (id) => {
-    const counter = this.state.counters.indexOf(id);
+  handleIncrement = (counter) => {
+    const counters = [...this.state.counters];
+    const index = counters.indexOf(counter);
+    counters[index].value += 1;
     this.setState({
-      counter,
+      counters,
     });
   };
 
-  handleDecrement = () => {
-    const { value } = this.state;
+  handleDecrement = (counter) => {
+    const counters = [...this.state.counters];
+    const index = counters.indexOf(counter);
+    if (!(counters[index].value === 0)) counters[index].value -= 1;
     this.setState({
-      value: value === 0 ? 0 : value - 1,
+      counters,
     });
   };
 
@@ -32,10 +36,10 @@ class Counters extends Component {
     const { counters } = this.state;
     return (
       <div>
-        {counters.map((value) => (
+        {counters.map((data) => (
           <Counter
-            key={value.id}
-            value={value}
+            key={data.id}
+            data={data}
             handleIncrement={this.handleIncrement}
             handleDecrement={this.handleDecrement}
           />
