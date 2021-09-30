@@ -10,18 +10,18 @@ class Counter extends Component {
   };
 
   render() {
-    const { data, handleIncrement, handleDecrement } = this.props;
+    const { data, onIncrement, onDecrement } = this.props;
     return (
-      <main className="container">
+      <div>
         <span className={this.counterClassName()}>{data.value}</span>
         {/* <span>{data.id}</span> */}
-        <button type="button" onClick={() => handleIncrement(data)}>
+        <button type="button" onClick={() => onIncrement(data)}>
           Increment
         </button>
-        <button type="button" onClick={() => handleDecrement(data)}>
+        <button type="button" onClick={() => onDecrement(data)}>
           Decrement
         </button>
-      </main>
+      </div>
     );
   }
 }
