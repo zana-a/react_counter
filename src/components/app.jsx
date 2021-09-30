@@ -1,8 +1,14 @@
 import React from 'react';
+import Navbar from './navbar';
+import Counter from './counter';
+import './app.css';
 
 function App() {
   return (
-    <h1>Hello, World</h1>
+    <>
+      <Navbar />
+      <Counter />
+    </>
   );
 }
 
