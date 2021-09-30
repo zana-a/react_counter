@@ -1,0 +1,43 @@
+{
+  "name": "react-counter",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": {
+    "name": "zana-a",
+    "email": "zana200.a@gmail.com",
+    "url": "https://github.com/zana-a"
+  },
+  "repository": {
+    "url": "https://github.com/zana-a/react-counter"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.26.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "react-scripts": "^4.0.3",
+    "cross-env": "^7.0.3"
+  },
+  "scripts": {
+    "start": "cross-env PORT=4100 react-scripts start",
+    "build": "react-scripts build"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
