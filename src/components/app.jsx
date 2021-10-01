@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import Navbar from "./navbar";
 import Counters from "./counters";
 import { CssBaseline, Container, Fab, Box } from "@mui/material";
-import { Add } from "@mui/icons-material";
+import { Create } from "@mui/icons-material";
+import { v4 as uuidv4 } from "uuid";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      counters: [{ id: 1, value: 0 }],
+      counters: [],
     };
   }
 
@@ -65,13 +66,13 @@ class App extends Component {
 
   handleNew = () => {
     let counters = [...this.state.counters];
-    counters.push({ id: counters.length + 1, value: 0 });
+    counters.push({ id: uuidv4(), value: 0 });
     this.setState({
       counters,
     });
   };
 
-  render() {
+  render = () => {
     return (
       <div>
         <CssBaseline />
@@ -80,7 +81,7 @@ class App extends Component {
           onDeleteAll={this.handleDeleteAll}
           data={this.state}
         />
-        <Container maxWidth="md">
+        <Container style={{ marginTop: "6rem", marginBottom: "2rem" }}>
           <Counters
             onReset={this.handleReset}
             onDelete={this.handleDelete}
@@ -91,12 +92,12 @@ class App extends Component {
         </Container>
         <Box style={{ position: "fixed", right: 0, bottom: 0 }} padding="1rem">
           <Fab color="primary" onClick={() => this.handleNew()}>
-            <Add />
+            <Create />
           </Fab>
         </Box>
       </div>
     );
-  }
+  };
 }
 
 export default App;

@@ -6,7 +6,8 @@ import {
   Chip,
   Card,
   CardContent,
-  Stack,
+  CardActions,
+  Typography,
   Box,
 } from "@mui/material";
 
@@ -16,9 +17,13 @@ class Counter extends Component {
   render = () => {
     const { data, onIncrement, onDecrement, onReset, onDelete } = this.props;
     const labelColor = data.value === 0 ? "default" : "primary";
+
     return (
       <Card>
         <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            {data.id}
+          </Typography>
           <Box>
             <Chip label={data.value} color={labelColor} />
             <IconButton variant="contained" onClick={() => onDecrement(data)}>
@@ -28,6 +33,25 @@ class Counter extends Component {
               <Add />
             </IconButton>
           </Box>
+        </CardContent>
+        <CardActions>
+          <Button
+            size="small"
+            onClick={() => onDelete(data)}
+            style={{ color: "red" }}
+          >
+            Delete
+          </Button>
+          <Button size="small" onClick={() => onReset(data)}>
+            Reset
+          </Button>
+        </CardActions>
+      </Card>
+    );
+
+    return (
+      <Card>
+        <CardContent>
           <Box>
             <Button
               size="small"
