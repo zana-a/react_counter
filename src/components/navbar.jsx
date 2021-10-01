@@ -1,13 +1,28 @@
-import React from 'react';
-import './navbar.css';
+import {
+  AppBar,
+  Typography,
+  Toolbar,
+  Box,
+  IconButton,
+  Button,
+  Container,
+} from "@mui/material";
+
+import React from "react";
 
 function Navbar() {
   return (
-    <nav>
-      <div className="container">
-        <span className="title">Counter App</span>
-      </div>
-    </nav>
+    <Box>
+      <AppBar position="static">
+        <Container maxWidth="md">
+          <Toolbar>
+            <Typography variant="h6" component="div">
+              React Counter
+            </Typography>
+          </Toolbar>
+        </Container>
+      </AppBar>
+    </Box>
   );
 }
 

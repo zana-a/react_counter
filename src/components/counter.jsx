@@ -1,38 +1,36 @@
 import React, { Component } from "react";
+import { Button, IconButton, Chip } from "@mui/material";
+import { Add, Remove, Delete, RotateLeft } from "@mui/icons-material";
 
 class Counter extends Component {
-  counterClassName = () => {
-    const { value } = this.props.data;
-    let className = "badge badge-";
-    if (value === 0) className += "red";
-    else className += "blue";
-    return className;
-  };
-
   render() {
-    const {
-      data,
-      onIncrement,
-      onDecrement,
-      onSpecificReset,
-      onSpecificDelete,
-    } = this.props;
+    const { data, onIncrement, onDecrement, onReset, onDelete } = this.props;
 
     return (
       <div>
-        <button type="button" onClick={() => onDecrement(data)}>
-          -
-        </button>
-        <span className={this.counterClassName()}>{data.value}</span>
-        <button type="button" onClick={() => onIncrement(data)}>
-          +
-        </button>
-        <button type="button" onClick={() => onSpecificReset(data)}>
-          Reset
-        </button>
-        <button type="button" onClick={() => onSpecificDelete(data)}>
-          Delete
-        </button>
+        <IconButton variant="contained" onClick={() => onDecrement(data)}>
+          <Remove />
+        </IconButton>
+        <Chip label={data.value} />
+        <IconButton variant="contained" onClick={() => onIncrement(data)}>
+          <Add />
+        </IconButton>
+        <Button
+          size="small"
+          variant="contained"
+          style={{ backgroundColor: "orange" }}
+          onClick={() => onReset(data)}
+        >
+          <RotateLeft />
+        </Button>
+        <Button
+          size="small"
+          variant="contained"
+          style={{ backgroundColor: "red" }}
+          onClick={() => onDelete(data)}
+        >
+          <Delete />
+        </Button>
       </div>
     );
   }

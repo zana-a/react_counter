@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import Counter from "./counter";
+import { Button } from "@mui/material";
+import { ClearAll } from "@mui/icons-material";
 
 class Counters extends Component {
   constructor() {
     super();
     this.state = {
-      counters: [],
+      counters: [{ id: 1, value: 0 }],
     };
   }
 
@@ -27,10 +29,10 @@ class Counters extends Component {
     });
   };
 
-  handleSpecificReset = (counter) => {
+  handleReset = (counter) => {
     const counters = [...this.state.counters];
     const index = counters.indexOf(counter);
-    counter.value = 0;
+    counters[index].value = 0;
     this.setState({
       counters,
     });
@@ -52,7 +54,7 @@ class Counters extends Component {
     });
   };
 
-  handleSpecificDelete = (other) => {
+  handleDelete = (other) => {
     let counters = [...this.state.counters];
     counters = counters.filter((counter) => counter.id !== other.id);
     this.setState({
@@ -78,19 +80,19 @@ class Counters extends Component {
             data={data}
             onIncrement={this.handleIncrement}
             onDecrement={this.handleDecrement}
-            onSpecificReset={this.handleSpecificReset}
-            onSpecificDelete={this.handleSpecificDelete}
+            onReset={this.handleReset}
+            onDelete={this.handleDelete}
           />
         ))}
-        <button type="button" onClick={this.handleResetAll}>
+        <Button variant="contained" onClick={this.handleResetAll}>
           Reset All
-        </button>
-        <button type="button" onClick={this.handleDeleteAll}>
-          Delete All
-        </button>
-        <button type="button" onClick={this.handleNew}>
+        </Button>
+        <Button variant="contained" onClick={this.handleDeleteAll}>
+          <ClearAll />
+        </Button>
+        <Button variant="contained" onClick={this.handleNew}>
           New
-        </button>
+        </Button>
       </main>
     );
   };
