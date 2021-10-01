@@ -1,23 +1,13 @@
 import React, { Component } from "react";
 import Counter from "./counter";
-import { Button } from "@mui/material";
-import { ClearAll } from "@mui/icons-material";
+import { Stack } from "@mui/material";
 
 class Counters extends Component {
   render = () => {
-    const {
-      onIncrement,
-      onDecrement,
-      onReset,
-      onDelete,
-      onResetAll,
-      onDeleteAll,
-      onNew,
-      data,
-    } = this.props;
+    const { onIncrement, onDecrement, onReset, onDelete, data } = this.props;
 
     return (
-      <main className="container">
+      <Stack spacing={2}>
         {data.counters.map((counter) => (
           <Counter
             key={counter.id}
@@ -28,16 +18,7 @@ class Counters extends Component {
             onDelete={onDelete}
           />
         ))}
-        <Button variant="contained" onClick={() => onResetAll()}>
-          Reset All
-        </Button>
-        <Button variant="contained" onClick={() => onDeleteAll()}>
-          <ClearAll />
-        </Button>
-        <Button variant="contained" onClick={() => onNew()}>
-          New
-        </Button>
-      </main>
+      </Stack>
     );
   };
 }

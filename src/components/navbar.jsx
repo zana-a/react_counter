@@ -1,29 +1,50 @@
+import React, { Component } from "react";
 import {
   AppBar,
   Typography,
   Toolbar,
   Box,
-  IconButton,
+  Badge,
   Button,
   Container,
 } from "@mui/material";
 
-import React from "react";
+import { ClearAll, RotateLeft } from "@mui/icons-material";
 
-function Navbar() {
-  return (
-    <Box>
-      <AppBar position="static">
-        <Container maxWidth="md">
-          <Toolbar>
-            <Typography variant="h6" component="div">
-              React Counter
-            </Typography>
-          </Toolbar>
-        </Container>
-      </AppBar>
-    </Box>
-  );
+class Navbar extends Component {
+  render = () => {
+    const { onResetAll, onDeleteAll, data } = this.props;
+    return (
+      <Box>
+        <AppBar position="fixed">
+          <Container maxWidth="md">
+            <Toolbar>
+              <Box flex={1}>
+                <Badge badgeContent={data.counters.length} color="secondary">
+                  <Typography variant="h6" component="div">
+                    React Counter
+                  </Typography>
+                </Badge>
+              </Box>
+              <Button
+                variant="contained"
+                style={{ backgroundColor: "orange", marginRight: "1rem" }}
+                onClick={() => onResetAll()}
+              >
+                <RotateLeft />
+              </Button>
+              <Button
+                variant="contained"
+                style={{ backgroundColor: "red" }}
+                onClick={() => onDeleteAll()}
+              >
+                <ClearAll />
+              </Button>
+            </Toolbar>
+          </Container>
+        </AppBar>
+      </Box>
+    );
+  };
 }
-
 export default Navbar;

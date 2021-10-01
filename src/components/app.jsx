@@ -75,13 +75,14 @@ class App extends Component {
     return (
       <div>
         <CssBaseline />
-        <Navbar />
+        <Navbar
+          onResetAll={this.handleResetAll}
+          onDeleteAll={this.handleDeleteAll}
+          data={this.state}
+        />
         <Container maxWidth="md">
           <Counters
-            onNew={this.handleNew}
-            onResetAll={this.handleResetAll}
             onReset={this.handleReset}
-            onDeleteAll={this.handleDeleteAll}
             onDelete={this.handleDelete}
             onIncrement={this.handleIncrement}
             onDecrement={this.handleDecrement}
