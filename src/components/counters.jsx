@@ -18,9 +18,8 @@ class Counters extends Component {
           </Grid>
         ) : (
           data.counters.map((counter) => (
-            <Grid item md={6}>
+            <Grid item md={6} key={counter.id}>
               <Counter
-                key={counter.id}
                 data={counter}
                 onIncrement={onIncrement}
                 onDecrement={onDecrement}
