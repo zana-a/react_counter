@@ -10,7 +10,7 @@
   "repository": {
     "url": "https://github.com/zana-a/react-counter"
   },
-  "homepage": "https://zana-a.github.io/react-counter",
+  "homepage": "https://zana-a.github.io/react-counter/",
   "dependencies": {
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
